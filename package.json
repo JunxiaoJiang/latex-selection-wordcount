@@ -1,0 +1,32 @@
+{
+  "name": "latex-selection-wordcount",
+  "displayName": "LaTeX Selection Word Count",
+  "description": "Show the TeXCount word count for selected LaTeX text in the status bar.",
+  "version": "0.1.0",
+  "publisher": "junxiaojiang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JunxiaoJiang/latex-selection-wordcount.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "keywords": ["latex", "texcount", "selection", "word count"],
+  "main": "./extension.js",
+  "files": ["extension.js", "README.md", "LICENSE"],
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "configuration": {
+      "title": "LaTeX Selection Word Count",
+      "properties": {
+        "latexSelectionWordCount.texcountPath": {
+          "type": "string",
+          "default": "texcount",
+          "description": "Path to TeXCount. On macOS, /Library/TeX/texbin/texcount is tried if texcount is not on PATH."
+        }
+      }
+    }
+  }
+}
