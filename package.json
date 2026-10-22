@@ -1,8 +1,8 @@
 {
   "name": "latex-selection-wordcount",
   "displayName": "LaTeX Selection Word Count",
-  "description": "Show the TeXCount word count for selected LaTeX text in the status bar.",
-  "version": "0.1.0",
+  "description": "Show selected LaTeX word counts and daily manuscript growth in the status bar.",
+  "version": "0.2.0",
   "publisher": "junxiaojiang",
   "license": "MIT",
   "repository": {
@@ -13,11 +13,20 @@
     "vscode": "^1.85.0"
   },
   "categories": ["Other"],
-  "keywords": ["latex", "texcount", "selection", "word count"],
+  "keywords": ["latex", "texcount", "selection", "word count", "daily writing"],
   "main": "./extension.js",
-  "files": ["extension.js", "README.md", "LICENSE"],
+  "scripts": {
+    "test": "node --test"
+  },
+  "files": ["extension.js", "daily.js", "README.md", "LICENSE"],
   "activationEvents": ["onStartupFinished"],
   "contributes": {
+    "commands": [
+      {
+        "command": "latexSelectionWordCount.showDailyHistory",
+        "title": "LaTeX Word Count: Show Daily History"
+      }
+    ],
     "configuration": {
       "title": "LaTeX Selection Word Count",
       "properties": {
@@ -25,6 +34,11 @@
           "type": "string",
           "default": "texcount",
           "description": "Path to TeXCount. On macOS, /Library/TeX/texbin/texcount is tried if texcount is not on PATH."
+        },
+        "latexSelectionWordCount.rootFile": {
+          "type": "string",
+          "default": "",
+          "description": "Optional main .tex file for the daily project count, relative to the workspace folder or as an absolute path. When empty, main.tex in the workspace is used if present."
         }
       }
     }
